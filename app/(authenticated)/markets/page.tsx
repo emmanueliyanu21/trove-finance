@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import MarketsPageClient from "./MarketsPageClient";
+import { MarketsView } from "@/components/MarketsView/MarketsView";
 
 export const metadata: Metadata = {
   title: "Markets",
@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function MarketsPage() {
-  return <MarketsPageClient />;
+  return <MarketsView />;
 }

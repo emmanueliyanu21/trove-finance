@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SettingsPageClient from "./SettingsPageClient";
+import { SettingsView } from "@/components/SettingsView/SettingsView";
 
 export const metadata: Metadata = {
   title: "Settings",
@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function SettingsPage() {
-  return <SettingsPageClient />;
+  return <SettingsView />;
 }

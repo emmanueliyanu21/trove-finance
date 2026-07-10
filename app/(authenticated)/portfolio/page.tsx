@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import PortfolioPageClient from "./PortfolioPageClient";
+import { PortfolioView } from "@/components/PortfolioView/PortfolioView";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function PortfolioPage() {
-  return <PortfolioPageClient />;
+  return <PortfolioView />;
 }

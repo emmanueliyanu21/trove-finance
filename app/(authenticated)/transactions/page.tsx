@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import TransactionsPageClient from "./TransactionsPageClient";
+import { TransactionsView } from "@/components/TransactionsView/TransactionsView";
 
 export const metadata: Metadata = {
   title: "Transactions",
@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function TransactionsPage() {
-  return <TransactionsPageClient />;
+  return <TransactionsView />;
 }

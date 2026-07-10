@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { usePortfolioContext } from "@/lib/context/PortfolioContext";
 import { Icon } from "@/components/shared/Icon/Icon";
 import { Button } from "@/components/shared/Button/Button";
 import { IconButton } from "@/components/shared/IconButton/IconButton";
@@ -25,13 +26,13 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 interface SidebarProps {
-  userName: string | null;
   open: boolean;
   onClose: () => void;
 }
 
-export function Sidebar({ userName, open, onClose }: SidebarProps) {
+export function Sidebar({ open, onClose }: SidebarProps) {
   const pathname = usePathname();
+  const { userName } = usePortfolioContext();
   const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {

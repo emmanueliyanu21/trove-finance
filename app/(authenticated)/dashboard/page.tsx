@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import DashboardPageClient from "./DashboardPageClient";
+import { DashboardView } from "@/components/dashboard/DashboardView";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardPage() {
-  return <DashboardPageClient />;
+  return <DashboardView />;
 }

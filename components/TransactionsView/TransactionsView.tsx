@@ -1,8 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { usePortfolio } from "@/hooks/usePortfolio";
-import { Layout } from "../layout/Layout";
+import { usePortfolioContext } from "@/lib/context/PortfolioContext";
 import { TransactionRow } from "./TransactionCard/TransactionCard";
 import { FilterPills } from "@/components/shared/FilterPills/FilterPills";
 import { DashboardSkeleton } from "@/components/shared/LoadingState/LoadingState";
@@ -12,7 +11,7 @@ import styles from "./TransactionsView.module.css";
 const FILTER_OPTIONS = ["All", "Buy", "Sell"];
 
 export function TransactionsView() {
-  const { loading, error, transactions, userName, retry } = usePortfolio();
+  const { loading, error, transactions, retry } = usePortfolioContext();
   const [filter, setFilter] = useState("All");
 
   const filtered = useMemo(() => {
@@ -21,27 +20,22 @@ export function TransactionsView() {
     return transactions.filter((t) => t.type === type);
   }, [transactions, filter]);
 
+  if (loading) return <DashboardSkeleton />;
+  if (error) return <ErrorState message={error} onRetry={retry} />;
+
   return (
-    <Layout userName={userName}>
-      {loading ? (
-        <DashboardSkeleton />
-      ) : error ? (
-        <ErrorState message={error} onRetry={retry} />
-      ) : (
-        <div className={styles.section}>
-          <h1 className={styles.title}>Transactions</h1>
+    <div className={styles.section}>
+      <h1 className={styles.title}>Transactions</h1>
 
-          <FilterPills options={FILTER_OPTIONS} active={filter} onChange={setFilter} />
+      <FilterPills options={FILTER_OPTIONS} active={filter} onChange={setFilter} />
 
-          <div className={styles.list}>
-            {filtered.length === 0 ? (
-              <p className={styles.empty}>No transactions match this filter.</p>
-            ) : (
-              filtered.map((t) => <TransactionRow key={t.id} transaction={t} />)
-            )}
-          </div>
-        </div>
-      )}
-    </Layout>
+      <div className={styles.list}>
+        {filtered.length === 0 ? (
+          <p className={styles.empty}>No transactions match this filter.</p>
+        ) : (
+          filtered.map((t) => <TransactionRow key={t.id} transaction={t} />)
+        )}
+      </div>
+    </div>
   );
 }

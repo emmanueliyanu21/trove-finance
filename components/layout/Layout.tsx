@@ -8,12 +8,10 @@ import { Topbar } from "./Topbar/Topbar";
 import styles from "./Layout.module.css";
 
 interface LayoutProps {
-  userName?: string | null;
-  onSearch?: (query: string) => void;
   children: ReactNode;
 }
 
-export function Layout({ userName, onSearch, children }: LayoutProps) {
+export function Layout({ children }: LayoutProps) {
   const router = useRouter();
   const [sessionUser] = useState<string | null>(() => getSession());
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -33,17 +31,13 @@ export function Layout({ userName, onSearch, children }: LayoutProps) {
 
   return (
     <div className={styles.shell}>
-      <Sidebar userName={userName ?? null} open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
+      <Sidebar open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
       {mobileNavOpen && (
         <div className={styles.overlay} onClick={() => setMobileNavOpen(false)} aria-hidden />
       )}
 
       <div className={styles.content}>
-        <Topbar
-          onSearch={onSearch ?? (() => {})}
-          onLogout={handleLogout}
-          onMenuClick={() => setMobileNavOpen(true)}
-        />
+        <Topbar onLogout={handleLogout} onMenuClick={() => setMobileNavOpen(true)} />
         <main className={styles.main}>{children}</main>
       </div>
     </div>

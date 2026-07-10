@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePortfolioContext } from "@/lib/context/PortfolioContext";
 import { Icon } from "@/components/shared/Icon/Icon";
 import { IconButton } from "@/components/shared/IconButton/IconButton";
 import styles from "./Topbar.module.css";
@@ -16,12 +17,12 @@ interface IconButtonConfig {
 }
 
 interface TopbarProps {
-  onSearch: (query: string) => void;
   onLogout: () => void;
   onMenuClick: () => void;
 }
 
-export function Topbar({ onSearch, onLogout, onMenuClick }: TopbarProps) {
+export function Topbar({ onLogout, onMenuClick }: TopbarProps) {
+  const { setSearchQuery } = usePortfolioContext();
   const [value, setValue] = useState("");
 
   const iconButtons: IconButtonConfig[] = [
@@ -32,7 +33,7 @@ export function Topbar({ onSearch, onLogout, onMenuClick }: TopbarProps) {
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter" && value.trim()) {
-      onSearch(value.trim());
+      setSearchQuery(value.trim());
     }
   }
 

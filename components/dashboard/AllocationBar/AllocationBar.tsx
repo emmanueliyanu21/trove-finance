@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import type { SectorAllocation } from "@/lib/types";
 import { formatCurrency, formatPercent } from "@/lib/utils/format/format";
@@ -10,6 +11,8 @@ interface AllocationBarProps {
 }
 
 export function AllocationBar({ allocation }: AllocationBarProps) {
+  const [hoveredSector, setHoveredSector] = useState<string | null>(null);
+
   if (allocation.length === 0) {
     return (
       <div className={styles.card}>
@@ -38,16 +41,29 @@ export function AllocationBar({ allocation }: AllocationBarProps) {
             <YAxis type="category" dataKey="name" hide />
             <Tooltip
               cursor={{ fill: "transparent" }}
-              formatter={(value, sector) => {
-                const numeric = Number(value);
-                return [
-                  `${formatCurrency(numeric)} (${formatPercent((numeric / total) * 100)})`,
-                  String(sector),
-                ];
+              content={({ active }) => {
+                const segment = active ? allocation.find((a) => a.sector === hoveredSector) : null;
+                if (!segment) return null;
+                return (
+                  <div className={styles.tooltip}>
+                    <span className={styles.tooltipDot} style={{ background: segment.color }} aria-hidden />
+                    <span className={styles.tooltipSector}>{segment.sector}</span>
+                    <span className={styles.tooltipValue}>
+                      {formatCurrency(segment.value)} ({formatPercent(segment.percent)})
+                    </span>
+                  </div>
+                );
               }}
             />
             {allocation.map((a) => (
-              <Bar key={a.sector} dataKey={a.sector} stackId="alloc" fill={a.color} />
+              <Bar
+                key={a.sector}
+                dataKey={a.sector}
+                stackId="alloc"
+                fill={a.color}
+                onMouseEnter={() => setHoveredSector(a.sector)}
+                onMouseLeave={() => setHoveredSector(null)}
+              />
             ))}
           </BarChart>
         </ResponsiveContainer>

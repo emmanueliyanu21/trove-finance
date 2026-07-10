@@ -1,0 +1,41 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: var(--radius-pill);
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.completed {
+  background: var(--color-mint);
+  color: var(--color-primary);
+}
+.completed .dot {
+  background: var(--color-success);
+}
+
+.pending {
+  background: var(--color-cream);
+  color: #8a5a1c;
+}
+.pending .dot {
+  background: var(--color-cream);
+}
+
+.failed {
+  background: var(--color-blush);
+  color: var(--color-negative);
+}
+.failed .dot {
+  background: var(--color-negative);
+}

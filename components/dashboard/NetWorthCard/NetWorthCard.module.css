@@ -1,0 +1,125 @@
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-neutral);
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--color-text-neutral);
+  cursor: pointer;
+  padding: 2px;
+}
+
+.toggle:hover {
+  color: var(--color-text-default);
+}
+
+.valueRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.value {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--color-text-default);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.changePositive {
+  color: var(--color-success);
+}
+
+.changeNegative {
+  color: var(--color-negative);
+}
+
+.trenIcon {
+  margin-top: -10px;
+  margin-right: 4px;
+}
+
+.changeAmount {
+  font-size: 13px;
+  color: var(--color-text-neutral);
+}
+
+.rangeRow {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.rangePill {
+  border: none;
+  background: none;
+  color: var(--color-text-disabled);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.rangePill:hover {
+  color: var(--color-text-neutral);
+}
+
+.rangePillActive {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.rangePillActive:hover {
+  color: var(--color-primary);
+}
+
+.sparkline {
+  width: 100%;
+  height: 180px;
+  margin-top: 8px;
+}
+
+.caption {
+  font-size: 11px;
+  color: var(--color-text-disabled);
+}

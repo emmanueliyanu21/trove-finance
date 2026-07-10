@@ -1,0 +1,83 @@
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-default);
+}
+
+.subtitle {
+  font-size: 11px;
+  color: var(--color-text-disabled);
+}
+
+.chartWrap {
+  width: 100%;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  clip-path: inset(0 round var(--radius-pill));
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.legendText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sectorName {
+  color: var(--color-text-neutral);
+  font-weight: 500;
+}
+
+.sectorPercent {
+  color: var(--color-text-default);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.sectorValue {
+  color: var(--color-text-disabled);
+  font-weight: 500;
+  font-size: 11px;
+}
+
+.empty {
+  font-size: 12px;
+  color: var(--color-text-disabled);
+}

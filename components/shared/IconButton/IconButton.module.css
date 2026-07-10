@@ -1,0 +1,53 @@
+.base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  padding: 6px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.outline {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-neutral);
+}
+
+.ghost {
+  color: var(--color-text-neutral);
+}
+
+.neutral:hover {
+  color: var(--color-text-default);
+}
+
+.outline.neutral:hover {
+  border-color: var(--color-text-neutral);
+}
+
+.danger {
+  color: var(--color-text-disabled);
+}
+
+.danger:hover {
+  color: var(--color-negative);
+  background: rgba(191, 34, 28, 0.08);
+}
+
+.badge {
+  position: absolute;
+  top: 7px;
+  right: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-negative);
+  border: 1.5px solid var(--color-surface);
+}

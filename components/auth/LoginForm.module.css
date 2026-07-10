@@ -1,0 +1,172 @@
+.page {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: radial-gradient(circle at 15% 10%, rgba(5, 154, 131, 0.08), transparent 45%),
+    var(--color-bg-page);
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 40px 32px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.brandMark {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.brandName {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-default);
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-default);
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.subheading {
+  font-size: 13px;
+  color: var(--color-text-neutral);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-neutral);
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  background: var(--color-bg-default);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--color-text-default);
+  outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.input::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-text-default);
+  -webkit-box-shadow: 0 0 0 1000px var(--color-bg-default) inset;
+  box-shadow: 0 0 0 1000px var(--color-bg-default) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.inputError {
+  border-color: var(--color-negative);
+}
+
+.togglePasswordPosition {
+  position: absolute;
+  right: 10px;
+}
+
+.fieldError {
+  font-size: 12px;
+  color: var(--color-negative);
+}
+
+.formError {
+  font-size: 12px;
+  color: var(--color-negative);
+  background: rgba(191, 34, 28, 0.08);
+  border-radius: var(--radius-control);
+  padding: 10px 12px;
+}
+
+.notice {
+  font-size: 12px;
+  color: var(--color-text-neutral);
+  background: var(--color-bg-default);
+  border-radius: var(--radius-control);
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 24px 0 18px;
+}
+
+.signupPrompt {
+  font-size: 12px;
+  color: var(--color-text-disabled);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.hint {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--color-text-disabled);
+  text-align: center;
+}
+
+@media (max-width: 420px) {
+  .card {
+    padding: 32px 22px;
+  }
+}

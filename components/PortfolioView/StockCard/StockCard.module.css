@@ -1,0 +1,115 @@
+.card {
+  background: var(--color-surface);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.separated {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.identity {
+  min-width: 0;
+}
+
+.ticker {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-default);
+}
+
+.name {
+  font-size: 12px;
+  color: var(--color-text-neutral);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shares {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  min-width: 64px;
+}
+
+.sharesLabel {
+  font-size: 11px;
+  color: var(--color-text-disabled);
+}
+
+.sharesValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-default);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 480px) {
+  .shares {
+    display: none;
+  }
+}
+
+.right {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.currentValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-default);
+  font-variant-numeric: tabular-nums;
+}
+
+.gainLoss {
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.positive {
+  color: var(--color-success);
+}
+
+.negative {
+  color: var(--color-negative);
+}
+
+.unavailable {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-disabled);
+  background: var(--color-bg-default);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  margin-top: 2px;
+}

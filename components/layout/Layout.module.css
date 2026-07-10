@@ -1,0 +1,50 @@
+.shell {
+  min-height: 100dvh;
+  background: var(--color-surface);
+  display: flex;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  margin-left: 240px;
+}
+
+@media (max-width: 900px) {
+  .content {
+    margin-left: 0;
+  }
+}
+
+.main {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0;
+  padding: 28px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 760px) {
+  .main {
+    padding: 20px 12px 48px;
+    gap: 20px;
+  }
+}
+
+.overlay {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(19, 52, 47, 0.4);
+    z-index: 25;
+  }
+}

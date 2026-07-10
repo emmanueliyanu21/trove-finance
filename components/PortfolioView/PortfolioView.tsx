@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { usePortfolio } from "@/hooks/usePortfolio";
 import { activeHoldings } from "@/lib/utils/portfolio/portfolio";
-import { Layout } from "../Layout/Layout";
+import { Layout } from "../layout/Layout";
 import { StockCard } from "./StockCard/StockCard";
 import { FilterPills } from "@/components/shared/FilterPills/FilterPills";
 import { DashboardSkeleton } from "@/components/shared/LoadingState/LoadingState";

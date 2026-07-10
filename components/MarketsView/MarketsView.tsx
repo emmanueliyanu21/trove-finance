@@ -1,7 +1,7 @@
 "use client";
 
 import { usePortfolio } from "@/hooks/usePortfolio";
-import { Layout } from "../Layout/Layout";
+import { Layout } from "../layout/Layout";
 import { ComingSoon } from "@/components/shared/ComingSoon/ComingSoon";
 import { DashboardSkeleton } from "@/components/shared/LoadingState/LoadingState";
 import { ErrorState } from "@/components/shared/ErrorState/ErrorState";

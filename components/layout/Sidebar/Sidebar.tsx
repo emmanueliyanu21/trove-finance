@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { getSession, logout } from "@/lib/services/authService";
+import { usePathname } from "next/navigation";
 import { Icon } from "@/components/shared/Icon/Icon";
 import { Button } from "@/components/shared/Button/Button";
 import { IconButton } from "@/components/shared/IconButton/IconButton";
-import styles from "./Layout.module.css";
+import styles from "./Sidebar.module.css";
 
 interface NavItem {
   key: string;
@@ -25,7 +24,13 @@ const NAV_ITEMS: NavItem[] = [
   { key: "settings", label: "Settings", icon: "settings", href: "/settings" },
 ];
 
-function Sidebar({ userName }: { userName: string | null }) {
+interface SidebarProps {
+  userName: string | null;
+  open: boolean;
+  onClose: () => void;
+}
+
+export function Sidebar({ userName, open, onClose }: SidebarProps) {
   const pathname = usePathname();
   const [showToast, setShowToast] = useState(false);
 
@@ -36,10 +41,18 @@ function Sidebar({ userName }: { userName: string | null }) {
   }, [showToast]);
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={`${styles.sidebar} ${open ? styles.sidebarOpen : ""}`}>
       <div className={styles.top}>
         <div className={styles.brand}>
           <span className={styles.brandName}>Trove</span>
+          <IconButton
+            icon="x"
+            label="Close navigation menu"
+            size={16}
+            variant="ghost"
+            onClick={onClose}
+            className={styles.closeSidebar}
+          />
         </div>
 
         <nav className={styles.nav}>
@@ -61,6 +74,7 @@ function Sidebar({ userName }: { userName: string | null }) {
                 key={item.key}
                 href={item.href}
                 className={`${styles.navItem} ${active ? styles.navItemActive : ""}`}
+                onClick={onClose}
               >
                 <span className={styles.navIcon}>
                   <Icon name={item.icon} />
@@ -101,103 +115,5 @@ function Sidebar({ userName }: { userName: string | null }) {
         </div>
       </div>
     </aside>
-  );
-}
-
-interface IconButtonConfig {
-  key: string;
-  icon: string;
-  label: string;
-  size?: number;
-  showDot?: boolean;
-  mobileOnly?: boolean;
-  onClick?: () => void;
-}
-
-function Topbar({ onSearch, onLogout }: { onSearch: (query: string) => void; onLogout: () => void }) {
-  const [value, setValue] = useState("");
-
-  const iconButtons: IconButtonConfig[] = [
-    { key: "notifications", icon: "bell", label: "Notifications", showDot: true },
-    { key: "help", icon: "help-circle", label: "Help" },
-    { key: "logout", icon: "logout", label: "Log out", size: 15, mobileOnly: true, onClick: onLogout },
-  ];
-
-  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key === "Enter" && value.trim()) {
-      onSearch(value.trim());
-    }
-  }
-
-  return (
-    <header className={styles.topbar}>
-      <div className={styles.mobileBrand}>
-        <div className={styles.brandMark}>T</div>
-      </div>
-
-      <div className={styles.searchWrap}>
-        <Icon name="search" size={15} className={styles.searchIcon} />
-        <input
-          type="text"
-          className={styles.searchInput}
-          placeholder="Search stocks, crypto…"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-      </div>
-
-      <div className={styles.spacer} />
-
-      <div className={styles.icons}>
-        {iconButtons.map((btn) => (
-          <IconButton
-            key={btn.key}
-            icon={btn.icon}
-            label={btn.label}
-            size={btn.size}
-            variant="ghost"
-            showBadge={btn.showDot}
-            onClick={btn.onClick}
-            className={btn.mobileOnly ? styles.mobileLogout : undefined}
-          />
-        ))}
-      </div>
-    </header>
-  );
-}
-
-interface LayoutProps {
-  userName?: string | null;
-  onSearch?: (query: string) => void;
-  children: ReactNode;
-}
-
-export function Layout({ userName, onSearch, children }: LayoutProps) {
-  const router = useRouter();
-  const [sessionUser] = useState<string | null>(() => getSession());
-
-  useEffect(() => {
-    if (!sessionUser) {
-      router.replace("/");
-    }
-  }, [sessionUser, router]);
-
-  function handleLogout() {
-    logout();
-    router.replace("/");
-  }
-
-  if (!sessionUser) return null;
-
-  return (
-    <div className={styles.shell}>
-      <Sidebar userName={userName ?? null} />
-
-      <div className={styles.content}>
-        <Topbar onSearch={onSearch ?? (() => {})} onLogout={handleLogout} />
-        <main className={styles.main}>{children}</main>
-      </div>
-    </div>
   );
 }

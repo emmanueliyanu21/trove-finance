@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { usePortfolio } from "@/hooks/usePortfolio";
-import { Layout } from "../Layout/Layout";
+import { Layout } from "../layout/Layout";
 import { TransactionRow } from "./TransactionCard/TransactionCard";
 import { FilterPills } from "@/components/shared/FilterPills/FilterPills";
 import { DashboardSkeleton } from "@/components/shared/LoadingState/LoadingState";

@@ -16,7 +16,12 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000). The login screen accepts
 any email/password that passes basic validation (non-empty, valid email
 format) — there's no real backend, so submitting simulates a network
-round-trip and then navigates to `/dashboard`.
+round-trip and then navigates to `/dashboard`. For example:
+
+```
+Email:    demo@trove.com
+Password: demo1234
+```
 
 ```bash
 npm run build   # production build
